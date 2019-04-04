@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+import sys
+sys.path.insert(0, '.')
+import argparse
+from metatools_ncbi import biosample
+
+parser = argparse.ArgumentParser()
+action_parsers = parser.add_subparsers(title="Specify which kind of metadata you want to download", dest="cmd")
+biosamples_parser = action_parsers.add_parser("biosamples", help="download metadata for\
+ one or more biosamples")
+m = biosamples_parser.add_mutually_exclusive_group(required=True)
+m.add_argument('-t', '--taxid', dest = "taxid", type = str, help = "specify the \
+NCBI taxid of the organism of interest")
+m.add_argument('-l', '--list', dest = "list_biosamples", type = str, help = "specify a list of \
+biosamples for which you want to download the metadata in a text file (One\
+ biosample per row)")
+biosamples_parser.add_argument("outdir", type=str,
+                    help="directory where I will write the .json files \
+                    containing the metadata of the biosamples")
+runs_parser = action_parsers.add_parser("runs", help="download the metadata of \
+the sequencing runs of one or more biosamples")
+runs_parser.add_argument("list_biosamples", type=str,
+                    help="text file with the list of biosamples for which you \
+                    want to download the metadata (one biosample per line)")
+runs_parser.add_argument("outdir", type=str,
+                    help="directory where I will write the .json files \
+                    containing the metadata of sequencing runs of each \
+                    biosample")
+if len(sys.argv)==1:
+    parser.print_help(sys.stderr)
+args = parser.parse_args()
+
+
+if args.cmd == "biosamples":
+    if args.taxid:
+        list_biosample_ids = biosample.get_biosample_numerical_ids_from_taxid(args.taxid)
+        biosample.get_json_metadata_from_biosamples(list_biosample_ids, 50, args.outdir)
+    elif args.list_biosamples:
+        with open(args.list_biosamples, 'r') as inp:
+            list_biosamples = inp.readlines()
+        biosample.get_json_metadata_from_biosamples(list_biosamples, 50, args.outdir)
+if args.cmd == "runs":
+    with open(args.list_biosamples, 'r') as inp:
+        list_biosamples = inp.readlines()
+    biosample.get_json_runinfo_from_biosamples(list_biosamples, args.outdir)
