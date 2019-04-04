@@ -31,10 +31,12 @@ Now we can use metatools_ncbi to download the RunInfo metadata::
 
 Roadmap (Changelog)
 ===================
-- Version 0.1
-  - download all biosamples of a given species using the NCBI txid (feature)
-  - download biosamples metadata providing a list of biosamples_parser (feature)
-  - download RunInfo metadata providing a list of biosamples (feature)
-  - ? at the end of the name of each json file when I download the metadata about the runs (bug)
-  - module available on Pypi ✕
-  - module available on Conda ✕
+* Todo
+  * ? at the end of the name of each json file when I download the metadata about the runs (bug)
+  * module available on Pypi ✕
+  * module available on Conda ✕
+
+* Version 0.1.0
+  * download all biosamples of a given species using the NCBI txid (feature)
+  * download biosamples metadata providing a list of biosamples_parser (feature)
+  * download RunInfo metadata providing a list of biosamples (feature)
