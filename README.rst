@@ -18,7 +18,7 @@ We want to download all the metadata associated to the biosamples of the microor
 
 We download the metadata of all the biosamples with the following command::
 
-    metatools_download.py biosamples -t txid1773 json_biosamples
+    metatools_download biosamples -t txid1773 json_biosamples
 
 In order to download the RunInfo metadata we need to have a file with the list of the biosamples. We can generate it like this::
 
@@ -33,7 +33,7 @@ Now we can use metatools_ncbi to download the RunInfo metadata::
     for current_file in `ls to_download*`;
     do
     echo " - Downloading RunInfos -- biosamples present in ${current_file}";
-    metatools_download.py runs ${current_file} json_runs/;
+    metatools_download runs ${current_file} json_runs/;
     done
 
 
@@ -43,6 +43,11 @@ Todo
 
 * "?" at the end of the name of each json file when I download the metadata about the runs (bug)
 * module available on Conda ✕
+
+Version 0.1.3
+
+* metatools_download should not have a .py extension (metatools_download.py)
+
 
 Version 0.1.2
 
