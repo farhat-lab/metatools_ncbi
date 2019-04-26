@@ -2,6 +2,14 @@ Purpose
 =======
 The main purpose of metatools_ncbi is to help you to download NCBI biosample and RunInfo metadata from a list of biosamples or a taxonomic id (txid).
 
+
+Installation
+============
+You can install metatools_ncbi through pip::
+
+    pip install metatools_ncbi
+
+
 Usage
 =====
 We want to download all the metadata associated to the biosamples of the microorganism *Mycobaterium tuberculosis*. First of all we determine the taxonomic id of this microorganism through NCBI (`NCBI taxonomy`_). The id for *M. tuberculosis* is txid1773.
@@ -36,9 +44,13 @@ Todo
 * "?" at the end of the name of each json file when I download the metadata about the runs (bug)
 * module available on Conda ✕
 
+Version 0.1.1
+
+* updated dependencies (progress), added information on how to install the module (README.rst)
+
 Version 0.1.0
 
-* download all biosamples of a given species using the NCBI txid (feature)
-* download biosamples metadata providing a list of biosamples_parser (feature)
+* download all biosample metadata of a given species using the NCBI txid (feature)
+* download biosample metadata providing a list of biosamples (feature)
 * download RunInfo metadata providing a list of biosamples (feature)
 * module available on Pypi
