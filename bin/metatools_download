@@ -38,9 +38,9 @@ if args.cmd == "biosamples":
         biosample.get_json_metadata_from_biosamples(list_biosample_ids, 50, args.outdir)
     elif args.list_biosamples:
         with open(args.list_biosamples, 'r') as inp:
-            list_biosamples = inp.readlines()
+            list_biosamples = inp.read().splitlines()
         biosample.get_json_metadata_from_biosamples(list_biosamples, 50, args.outdir)
 if args.cmd == "runs":
     with open(args.list_biosamples, 'r') as inp:
-        list_biosamples = inp.readlines()
+        list_biosamples = inp.read().splitlines()
     biosample.get_json_runinfo_from_biosamples(list_biosamples, args.outdir)

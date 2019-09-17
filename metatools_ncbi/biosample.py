@@ -29,6 +29,7 @@ def get_json_metadata_from_biosamples(list_biosamples: list, num_records_per_req
 	list_of_dicts_metadata = []
 	all_attributes = {}
 	list_of_lists = list(generate_lists_k_elments_from_list(list_biosamples, num_records_per_request))
+	#print(list_of_lists)
 	with IncrementalBar('Downloading...', max=len(list_of_lists), suffix='%(percent).1f%%') as bar:
 		for chunk, current_list in enumerate(list_of_lists):
 			#print("* analyzing chunk {} of {}".format(chunk,len(list_of_lists)))
@@ -133,15 +134,17 @@ def get_csv_runinfo_from_biosamples(list_of_biosamples: list, csv_outfile: str):
 			outf.write("\n".join(data))
 
 def get_json_runinfo_from_biosamples(list_of_biosamples: list, dir_json: str):
-	d = {}
 	# I create the json files in the output directory
 	if not os.path.exists(dir_json):
 		os.makedirs(dir_json)
 	with IncrementalBar('Downloading...', max=len(list_of_biosamples), suffix='%(percent).1f%%') as bar:
 		for biosample in list_of_biosamples:
-			response = get_runinfo_from_ncbi_id(biosample)
-			data = csv.DictReader(response.splitlines())
+			d = {}
+			if biosample!="":
+				response = get_runinfo_from_ncbi_id(biosample)
+				data = csv.DictReader(response.splitlines())
 			for entry in data:
+				#print(entry)
 				d[entry["Run"]] = {}
 				d[entry["Run"]] = entry
 			with open(os.path.join(dir_json, biosample + ".json"),"w") as outf:

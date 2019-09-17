@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='metatools_ncbi',
-version='0.1.3',
+version='0.1.4',
 description='Download biosample and SRA runinfo metadata from NCBI',
 url='http://github.com/farhat-lab/metatools_ncbi',
 author='Luca Freschi',

@@ -41,13 +41,16 @@ Roadmap (Changelog)
 ===================
 Todo
 
-* "?" at the end of the name of each json file when I download the metadata about the runs (bug)
 * module available on Conda ✕
+
+Version 0.1.4
+
+* fixed: "?" character at the end of the name of each json file when I download the metadata about the runs (bug fix)
+* fixed: the dictionary "d" inside the function get_json_runinfo_from_biosamples is storing all the sequencing runs information for all biosamples instead of the one/those of a single biosample (bug fix)
 
 Version 0.1.3
 
-* metatools_download should not have a .py extension (metatools_download.py)
-
+* metatools_download should not have a .py extension (documentation)
 
 Version 0.1.2
 
