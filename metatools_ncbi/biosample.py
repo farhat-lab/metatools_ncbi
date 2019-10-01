@@ -143,10 +143,10 @@ def get_json_runinfo_from_biosamples(list_of_biosamples: list, dir_json: str):
 			if biosample!="":
 				response = get_runinfo_from_ncbi_id(biosample)
 				data = csv.DictReader(response.splitlines())
-			for entry in data:
-				#print(entry)
-				d[entry["Run"]] = {}
-				d[entry["Run"]] = entry
-			with open(os.path.join(dir_json, biosample + ".json"),"w") as outf:
-				json.dump(d, outf, indent = 4)
+				for entry in data:
+					#print(entry)
+					d[entry["Run"]] = {}
+					d[entry["Run"]] = entry
+				with open(os.path.join(dir_json, biosample + ".json"),"w") as outf:
+					json.dump(d, outf, indent = 4)
 			bar.next()

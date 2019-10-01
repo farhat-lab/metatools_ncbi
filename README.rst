@@ -43,6 +43,10 @@ Todo
 
 * module available on Conda ✕
 
+Version 0.1.5
+
+* fixed: "metatools_download runs" cannot handle empty lines in the list of biosamples (bug fix)
+
 Version 0.1.4
 
 * fixed: "?" character at the end of the name of each json file when I download the metadata about the runs (bug fix)
