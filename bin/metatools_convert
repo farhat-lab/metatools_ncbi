@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+
+import sys
+sys.path.insert(0, '.')
+import argparse
+from metatools_ncbi import convert_to_biosample
+
+parser = argparse.ArgumentParser()
+parser.add_argument("list_ncbi_ids", type=str,
+                    help="text file with a list of NCBI ids that will be converted to biosamples (if possible)")
+parser.add_argument("tsv_associations", type=str,
+                    help="tsv file with the associations: NCBI id -> biosample (e.g. runid -> biosample)")
+
+if len(sys.argv)==1:
+    parser.print_help(sys.stderr)
+args = parser.parse_args()
+
+with open(args.list_ncbi_ids, 'r') as inp:
+    ncbi_ids = inp.read().splitlines()
+list_biosamples=convert_to_biosample.convert_to_biosample(ncbi_ids)
+convert_to_biosample.write_tsv(ncbi_ids,list_biosamples,args.tsv_associations)
+

@@ -27,6 +27,7 @@ runs_parser.add_argument("outdir", type=str,
                     help="directory where I will write the .json files \
                     containing the metadata of sequencing runs of each \
                     biosample")
+
 if len(sys.argv)==1:
     parser.print_help(sys.stderr)
 args = parser.parse_args()
@@ -44,3 +45,4 @@ if args.cmd == "runs":
     with open(args.list_biosamples, 'r') as inp:
         list_biosamples = inp.read().splitlines()
     biosample.get_json_runinfo_from_biosamples(list_biosamples, args.outdir)
+
