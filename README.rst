@@ -12,6 +12,10 @@ You can install metatools_ncbi through pip::
 
 Usage
 =====
+
+Downloading metadata
+--------------------
+
 We want to download all the metadata associated to the biosamples of the microorganism *Mycobaterium tuberculosis*. First of all we determine the taxonomic id of this microorganism through NCBI (`NCBI taxonomy`_). The id for *M. tuberculosis* is txid1773.
 
 .. _NCBI taxonomy: https://www.ncbi.nlm.nih.gov/taxonomy
@@ -35,6 +39,24 @@ Now we can use metatools_ncbi to download the RunInfo metadata::
     echo " - Downloading RunInfos -- biosamples present in ${current_file}";
     metatools_download runs ${current_file} json_runs/;
     done
+
+Converting NCBI IDs
+-------------------
+
+In order to convert a NCBI IDs (e.g. bioprojects, run ids) to biosamples, you can type the following command::
+
+    metatools_convert list_ids.txt ids_converted.txt
+
+You can also use use this functionality in your own code::
+
+    from metatools_ncbi import convert_to_biosample
+    list_of_ncbi_ids=["SRS2577112", "SRR6152911", "SRP047263", "PRJNA413593", "PRJNA211721"]
+    list_biosamples=convert_to_biosample.convert_to_biosample(list_of_ncbi_ids)
+
+    print(list_biosamples)
+    ['SAMN07766347', 'SAMN07765863', 'SAMN02673324', '', 'SAMN02231188']
+
+NOTE: the NCBI ID PRJNA413593 has not been converted to a biosample because it contains 1378 biosamples ([check it yourself](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA413593)), so it is impossible to establish the biosample you are interested in using this ID.
 
 
 Roadmap (Changelog)
