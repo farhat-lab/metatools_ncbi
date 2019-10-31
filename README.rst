@@ -68,7 +68,7 @@ Todo
 
 Version 0.2.0
 
-* added functionality ("metatools_convert") to convert a list of NCBI IDs (sequencing runs, bioprojects) to biosamples, when possible (feature)
+* added functionality ("metatools_convert") to convert a list of NCBI IDs (e.g. sequencing runs, bioprojects) to biosamples, when possible (feature)
 
 Version 0.1.5
 
