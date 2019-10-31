@@ -67,6 +67,10 @@ Todo
 * module available on Conda ✕
 * the code that converts sequencing runs and bioprojects to biosamples is too slow
 
+Version 0.2.1
+
+* bin/metatools_convert was not included in setup.py (bugfix)
+
 Version 0.2.0
 
 * added functionality ("metatools_convert") to convert a list of NCBI IDs (e.g. sequencing runs, bioprojects) to biosamples, when possible (feature)
