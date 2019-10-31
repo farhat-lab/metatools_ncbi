@@ -56,8 +56,9 @@ You can also use use this functionality in your own code::
     print(list_biosamples)
     ['SAMN07766347', 'SAMN07765863', 'SAMN02673324', '', 'SAMN02231188']
 
-NOTE: the NCBI ID PRJNA413593 has not been converted to a biosample because it contains 1378 biosamples ([check it yourself](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA413593)), so it is impossible to establish the biosample you are interested in using this ID.
+NOTE: the NCBI ID PRJNA413593 has not been converted to a biosample because it contains 1378 biosamples (check it yourself_), so it is impossible to establish the biosample you are interested in using this ID.
 
+.. _check it yourself: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA413593)
 
 Roadmap (Changelog)
 ===================
